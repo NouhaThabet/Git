@@ -1,0 +1,76 @@
+user@WX-7CYDLX1 MINGW64 ~/Projects (master)
+$ git clone git@github.com:nouhaaa/Data-Engineer-Notes.git
+Cloning into 'Data-Engineer-Notes'...
+The authenticity of host 'github.com (140.82.121.4)' can't be established.
+RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added 'github.com,140.82.121.4' (RSA) to the list of known hosts.
+git@github.com: Permission denied (publickey).
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+
+# Creata an ssh key 
+user@WX-7CYDLX1 MINGW64 ~/Projects (master)
+$ ssh-keygen -t rsa -b 4096 -C  "user@gmail.com"
+Generating public/private rsa key pair.
+Enter file in which to save the key (/c/Users/user/.ssh/id_rsa):
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /c/Users/user/.ssh/id_rsa
+Your public key has been saved in /c/Users/user/.ssh/id_rsa.pub
+The key fingerprint is:
+SHA256:yk8G5h09vkkhQGkTXqPDnQJh/m4N/IXIc8/oBUWquis user@gmail.com
+The key's randomart image is:
++---[RSA 4096]----+
+|    +.ooo .      |
+|   o =++ =       |
+|    ..B.+ .      |
+|     + * +       |
+|      @ S =      |
+|     * X X o     |
+|    . * B *      |
+|  E  o = o o     |
+|   .o.  o o      |
++----[SHA256]-----+
+
+
+#Ensure the ssh-agent is running. You can use the "Auto-launching the ssh-agent"
+user@WX-7CYDLX1 MINGW64 ~/Projects (master)
+$  eval `ssh-agent -s`
+Agent pid 931
+
+#Add your SSH private key to the ssh-agent. If you created your key with a different name, 
+#or if you are adding an existing key that has a different name, replace id_ed25519 in the command 
+#with the name of your private key file.
+user@WX-7CYDLX1 MINGW64 ~/Projects (master)
+$ ssh-add ~/.ssh/id_rsa
+Identity added: /c/Users/user/.ssh/id_rsa (user@gmail.com)
+
+# to display OPENSSH PRIVATE KEY
+user@WX-7CYDLX1 MINGW64 ~/Projects (master)
+$ cat ~/.ssh/id_rsa
+
+#display ssh key 
+user@WX-7CYDLX1 MINGW64 ~/Projects (master)
+$ cat ~/.ssh/id_rsa.pub
+
+#Create new ssh key on github and copy the ssh key generated
+
+#clone the github directory
+user@WX-7CYDLX1 MINGW64 ~/Projects (master)
+$ git clone git@github.com:nouhaaa/Data-Engineer-Notes.git
+Cloning into 'Data-Engineer-Notes'...
+remote: Enumerating objects: 6, done.
+remote: Counting objects: 100% (6/6), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 6 (delta 0), reused 0 (delta 0), pack-reused 0
+Receiving objects: 100% (6/6), done.
+
+user@WX-7CYDLX1 MINGW64 ~/Projects (master)
+$ ls
+Data-Engineer-Notes/  file.txt  file.txt.pub
+
+
+
